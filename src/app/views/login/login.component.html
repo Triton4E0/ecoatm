@@ -1,0 +1,26 @@
+<div class="login-container">
+  <div class="login-header">
+    Log in
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="login-content">
+      <div class="alert" *ngIf="errAlert">
+        {{errAlert}}
+      </div>
+      <div>
+        <input type="text" formControlName="username" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && form.username.errors }">
+      </div>
+      <div>
+        <input type="password" formControlName="password" placeholder="Password">
+      </div>
+      <div class="login-action">
+        <a class="forgot-password" routerLink="/"> Forgot Password?</a>
+        <button class="login-btn" [ngClass]="{'disabled': !form.password.valid || !form.username.valid}" [disabled]="!form.password.valid || !form.username.valid">Login</button>
+      </div>
+      <div class="login-policy">
+        By clicking 'Login' you confirm that you have read and agree to the terms of our
+          <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </form>
+</div>
